@@ -1,0 +1,41 @@
+<nav>
+  <a routerLink="/heroes">Sig in</a> 
+</nav>
+
+<nav>
+  <a routerLink="/heroes">Register</a> 
+</nav>
+
+<nav>
+  <a routerLink="/user/detail/1">My Account</a> 
+</nav>
+
+<div>
+  <label>Auction title:
+    <input #auctionTitle />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(auctionTitle.value); auctionTitle.value=''">add</button>
+</div>
+
+<h2>My Auctions</h2>
+<ul class="auctions">
+  <li *ngFor="let auction of auctions">
+    <a routerLink="/detail/{{auction.id}}"> 
+        <span class="badge">{{auction.id}}</span> {{auction.title}} 
+    </a>
+      <button class="delete" title="delete auction"
+        (click)="delete(auction)">x</button>
+  </li>
+    
+</ul>
+
+<app-auction-search></app-auction-search>
+
+
+
+
+    
+    
+
+

@@ -1,0 +1,16 @@
+<div *ngIf="auction">
+
+  <h2>{{auction.title | uppercase}} Details</h2>
+  <div><span>id: </span>{{auction.id}}</div>
+  <div>
+    <label>title:
+      <input [(ngModel)]="auction.title" placeholder="title"/>
+    </label>
+  </div>
+    
+    <button (click)="save()">save</button>
+    
+    <button (click)="goBack()">go back</button>
+
+</div>
+
