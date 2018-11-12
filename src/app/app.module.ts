@@ -12,6 +12,11 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AuctionSearchComponent } from './auction-search/auction-search.component';
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AllAuctionsComponent } from './all-auctions/all-auctions.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,9 +25,14 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     AuctionDetailComponent,
     MessagesComponent,
     AuctionSearchComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    NavbarComponent,
+    AllAuctionsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

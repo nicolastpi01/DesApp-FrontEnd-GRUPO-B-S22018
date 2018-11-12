@@ -5,7 +5,9 @@ import { Auction } from '../auction';
 import { User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
+import { AuctionService } from '../auction.service';
 import { Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-detail',
@@ -16,35 +18,67 @@ export class UserDetailComponent implements OnInit {
     myAuctions: Auction[];
     auctionsInWichIBid: Auction[];
     user: User;
+    registerForm: FormGroup;
+    
+    //myAuctions = AUCTIONS; // mock data
+    //auctionsInWichIBid = AUCTIONS; // mock data
+    //user = USER; // mock data
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private location: Location) { }
+    // 
+  constructor(private route: ActivatedRoute, private userService: UserService, private location: Location, private auctionService: AuctionService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
       this.getUser();
       this.getAuctionsInWichIBid();
       this.getMyAuctions();
+      
+      this.registerForm = this.formBuilder.group({
+            //title:        ['', [Validators.required, Validators.minLength(10), Validators.minLength(50)]]
+            title:        ['', Validators.required],
+            description:  ['', Validators.required],
+            address:      ['', Validators.required],
+            initialPrice: ['', Validators.required],
+            endingTime:   ['', Validators.required],
+            openingDate:  ['', Validators.required],
+            endingDate:   ['', Validators.required],
+            //urlPics:      ['', Validators.required],
+        });      
   }
     
+    // convenience getter for easy access to form fields
+    get f() { return this.registerForm.controls; }
+    
     getUser(): void {
-        //this.user = USER;
         const id = +this.route.snapshot.paramMap.get('id');
         this.userService.getUser(id)
         .subscribe(user => this.user = user);
     }
     
     getMyAuctions(): void {
-        //this.myAuctions = AUCTIONS;
         const id = +this.route.snapshot.paramMap.get('id');
         this.userService.getUserAuctions(id)
         .subscribe(auctions => this.myAuctions = auctions);
     }
     
     getAuctionsInWichIBid(): void {
-        //this.auctionsInWichIBid = AUCTIONS;
         const id = +this.route.snapshot.paramMap.get('id');
         this.userService.getUserAuctionsInWichIBid(id)
         .subscribe(auctions => this.auctionsInWichIBid = auctions);
     }
+     
+    addAuction(): void {
+        // stop here if form is invalid
+        if (this.registerForm.invalid) {
+            return;
+        }
+        //this.loading = true;
+        
+        this.auctionService.addAuction(this.registerForm.value)
+        .subscribe(auction => {
+        this.myAuctions.push(auction);
+        });
+    }
+    
     
     save(): void {
         // hay que ver que hace normalize, hay que hacer una especie de F5 luego de subscribe
@@ -54,6 +88,11 @@ export class UserDetailComponent implements OnInit {
     
     delete(): void {
         this.userService.deleteUser(this.user).subscribe();
+    }
+    
+    deleteAuction(auction: Auction): void {
+        this.myAuctions = this.myAuctions.filter(a => a !== auction);
+        this.auctionService.deleteAuction(auction).subscribe();
     }
     
     

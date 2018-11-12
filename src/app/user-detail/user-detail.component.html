@@ -1,38 +1,22 @@
-<!--
-<div>
-  <ul class="auctions">
-    <h3>My Auctions</h3>
-    <li *ngFor="let auction of auctions">
-        <a routerLink="/detail/{{auction.id}}">
-            <img src={{auction.image}} >
-            <span class="badge">{{auction.id}}</span> {{auction.title}}      
-            <p>{{auction.description}}</p>   
-        </a>   
-    </li>
-  </ul>
-</div>
--->
-
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
-    .bs-example{
-    	margin: 20px;
-    }
-</style>
+        .bs-example {
+            margin: 20px;
+        }
+    </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
-
+<!--
 <div class="container-fluid">
-    <h1>Hello World!</h1>
-    <p>Resize the browser window to see the effect.</p>
-    <p>The columns will automatically stack on top of each other when the screen is less than 576px wide.</p>
+    <h1>Hello {{user.name}}!</h1>
+    <p>You can watch your auctions, watch the auctions in which you bidded, edit your profile, your auctions, and add some new.</p>
 
     <div class="row">
         <div class="col-sm-5" style="background-color:lavender;">
@@ -47,14 +31,14 @@
                     </a>
                 </li>
             </ul>
-
         </div>
+        
         <div class="col-sm-5" style="background-color:lavenderblush;">.col-sm-5
             <ul class="auctions2">
                 <h3>Auctions in wich I bid</h3>
                 <li *ngFor="let auction of auctionsInWichIBid">
                     <a routerLink="/detail/{{auction.id}}">
-                        <img src={{auction.urlPics[0]}}> 
+                        <img src={{auction.urlPics[0]}}>
                         <span class="badge">{{auction.id}}</span> {{auction.title}}
                         <p>{{auction.description}}</p>
                     </a>
@@ -63,25 +47,116 @@
         </div>
     </div>
 
+-->
 
-    <div class="bs-example">
-        <form>
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="input-group">
-                        <input [(ngModel)]="user.name" type="text" class="form-control" placeholder="{{user.name}}">
-                        <input [(ngModel)]="user.lastName" type="text" class="form-control" placeholder="{{user.lastName}}">
-                        <input [(ngModel)]="user.email" type="text" class="form-control" placeholder="{{user.email}}">
-                        <input [(ngModel)]="user.birthday" type="text" class="form-control" placeholder="{{user.birthday}}">
-                    </div>
-                </div>
-            </div>
-        </form>
+<div class="container-fluid">
+    <h1>Hello {{user.name}}!</h1>
+    <p>You can watch your auctions, watch the auctions in which you bidded, edit your profile, your auctions, and add some new.</p>
+
+    <br>
+    <br>
+
+
+    <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;">
+            <ul class="myAuctions">
+                <h3>My Auctions</h3>
+                <li *ngFor="let auction of myAuctions">
+                    <a routerLink="/detail/{{auction.id}}">
+                        <img class="rounded-circle img-fluid d-block mx-auto" src="{{auction.urlPics[0]}}" alt="">
+                        <h3>{{auction.title}}
+                            <small><span class="badge">{{auction.id}}</span></small>
+                        </h3>
+                        <p>{{auction.description}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-6" style="background-color:lavenderblush;">
+            <ul class="myAuctions">
+                <h3>My Activity</h3>
+                <li *ngFor="let auction of auctionsInWichIBid">
+                    <a routerLink="/detail/{{auction.id}}">
+                        <img class="rounded-circle img-fluid d-block mx-auto" src="{{auction.urlPics[0]}}" alt="">
+                        <h3>{{auction.title}}
+                            <small><span class="badge">{{auction.id}}</span></small>
+                        </h3>
+                        <p>{{auction.description}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
+    <br>
+    <br>
+
     
-    
-    
+    <h3>Create a new Auction</h3>
+    <p>generates a new auction so that users can compete for it. Add some date!!!</p>
+    <br>
+    <form [formGroup]="registerForm" (ngSubmit)="addAuction()">
+        
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required">Title is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">Description is required</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="initialPrice">Price</label>
+            <input type="number" formControlName="initialPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.initialPrice.errors }" />
+            <div *ngIf="submitted && f.initialPrice.errors" class="invalid-feedback">
+                <div *ngIf="f.initialPrice.errors.required">Price is required</div>
+                <!--<div *ngIf="f.initialPrice.errors.minlength">Password must be at least 6 characters</div> -->
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="endingTime">Ending Time</label>
+            <input type="number" formControlName="endingTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endingTime.errors }" />
+            <div *ngIf="submitted && f.endingTime.errors" class="invalid-feedback">
+                <div *ngIf="f.endingTime.errors.required">Ending Time</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="openingDate">Opening Date</label>
+            <input type="date" formControlName="openingDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.openingDate.errors }" />
+            <div *ngIf="submitted && f.openingDate.errors" class="invalid-feedback">
+                <div *ngIf="f.openingDate.errors.required">Opening Date</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="endingDate">Ending Date</label>
+            <input type="date" formControlName="endingDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endingDate.errors }" />
+            <div *ngIf="submitted && f.endingDate.errors" class="invalid-feedback">
+                <div *ngIf="f.endingDate.errors.required">Ending Date</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <br>
+            <!--<button [disabled]="loading" class="btn btn-primary">Save</button> -->
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </form>
+
 </div>
 
 

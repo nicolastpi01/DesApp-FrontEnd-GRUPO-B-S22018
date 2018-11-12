@@ -1,7 +1,7 @@
 * {margin: 0; padding: 0;}
 
 div {
-  margin: 20px;
+  margin: 0px;
 }
 
 ul {
@@ -9,16 +9,8 @@ ul {
   width: 500px;
 }
 
-
-li img {
-  float: left;
-  margin: 0 15px 0 0;
-    width: 128px;
-    height:128px;
-}
-
 li p {
-  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+  font: 200 14px/1.5 Georgia, Times New Roman, serif;
 }
 
 li {
@@ -26,11 +18,59 @@ li {
   overflow: auto;
 }
 
+p {
+  font: 200 16px/1.5 Georgia, Times New Roman, serif;
+}
+
 li:hover {
   background: #eee;
   cursor: pointer;
 }
 
+li img { 
+  margin: 0 15px 0 0;
+    width: 130px;
+    height:130px;
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
 h3 {
   font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+h1 {
+  font: bold 25px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+/* styled a button */
+
+.container button { 
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width:  250px;
+    border-radius: 4px;
+}
+
+/* styled a button  */
+
+.myAuctions {
+    text-align:center;
+    align-items: center;
+}
+
+
+.container-fluid {
+    margin-top: 20px;
+    margin-bottom: 40px; 
 }

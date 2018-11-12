@@ -1,0 +1,58 @@
+
+ul {
+  list-style-type: none;
+  width: 500px;
+}
+
+h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;   
+}
+
+li p {
+  font: 200 14px/1.5 Georgia, Times New Roman, serif;
+}
+
+p {
+  font: 200 20px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+  padding: 10px;
+  overflow: auto;
+}
+
+li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+li img { 
+  margin: 0 15px 0 0;
+    width: 130px;
+    height:130px;
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+
+/* margin private CSS styles */
+
+.column-in-center{
+    float: none;
+    margin: 0 auto;
+}
+
+.container-fluid {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    text-align:center;
+    align-items: center;
+}

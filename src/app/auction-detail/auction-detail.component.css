@@ -6,25 +6,29 @@ label {
   color: #607D8B;
   font-weight: bold;
 }
-input {
-  height: 2em;
-  font-size: 1em;
-  padding-left: .4em;
+
+
+.cities1 {
+    display: inline-block;
 }
-button {
-  margin-top: 20px;
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer; cursor: hand;
+
+
+.cities2 { 
+    display: inline-block;    
+    position: absolute;
+    left: 160px; 
 }
-button:hover {
-  background-color: #cfd8dc;
+
+.cities3 { 
+    display: inline-block;    
+    position: absolute;
+    left: 300px; 
 }
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
+
+.container {
+    position: absolute;
+    margin-top: 20px; 
 }
+
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <h1>All Auctions!</h1>
+        <p>Look at the auctions, look at their status, select some and start participating!.</p>
+        
+        <br>
+        <br>
+
+        <div class="row">
+            <!-- col-sm-5 -->
+            <div class="col-sm-5 column-in-center" style="background-color:lavender;">
+                <ul class="myAuctions">
+                    <h3>All Auctions</h3>
+                    <li *ngFor="let auction of auctions">
+                        <a routerLink="/detail/{{auction.id}}">
+                            <img class="rounded-circle img-fluid d-block mx-auto" src="{{auction.urlPics[0]}}" alt="">
+                            <h3>{{auction.title}}
+                                <small><span class="badge">{{auction.id}}</span></small>
+                            </h3>
+                            <p>{{auction.description}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

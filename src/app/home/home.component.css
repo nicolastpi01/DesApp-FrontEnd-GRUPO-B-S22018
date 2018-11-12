@@ -1,103 +1,69 @@
-/* AuctionComponent's private CSS styles */
-.selected {
-  background-color: #CFD8DC !important;
-  color: white;
+/* Search bar's private CSS styles */
+.input-group.md-form.form-sm.form-1 input{
+    border: 1px solid #bdbdbd;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
 }
-.auctions {
-  margin: 0 0 2em 0;
+
+/* Search bar's private CSS styles */
+
+
+/* list's private CSS styles */
+
+* {margin: 0; padding: 0;}
+
+
+div {
+  margin: 0px;
+}
+
+ 
+ul {
   list-style-type: none;
-  padding: 0;
-  width: 15em;
+  width: 400px;
 }
-.auctions li {
+
+
+li img {
+  float: left;
+  margin: 0 15px 0 0;
+    width: 128px;
+    height:128px;
+}
+
+p {
+  font: 200 16px/1.5 Georgia, Times New Roman, serif;
+}
+
+li p {
+  font: 200 15px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+  padding: 10px;
+  overflow: auto;
+}
+
+
+li:hover {
+  background: #eee;
   cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-}
-.auctions li.selected:hover {
-  background-color: #BBD8DC !important;
-  color: white;
-}
-.auctions li:hover {
-  color: #607D8B;
-  background-color: #DDD;
-  left: .1em;
 }
 
-.auctions a {
-  color: #888;
-  text-decoration: none;
-  position: relative;
-  display: block;
-  width: 250px;
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
 }
 
-.auctions a:hover {
-  color:#607D8B;
+h1 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;   
 }
 
-.auctions .text {
-  position: relative;
-  top: -3px;
-}
-.auctions .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
+.container-fluid {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    align-items: center;
 }
 
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
-}
-nav a:visited, a:link {
-  color: #607d8b;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #cfd8dc;
-}
-nav a.active {
-  color: #039be5;
-}
 
-button {
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-  font-family: Arial;
-}
- 
-button:hover {
-  background-color: #cfd8dc;
-}
- 
-button.delete {
-  position: relative;
-  left: 194px;
-  top: -32px;
-  background-color: gray !important;
-  color: white;
-}
+
+

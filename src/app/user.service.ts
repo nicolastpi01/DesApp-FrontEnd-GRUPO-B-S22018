@@ -45,7 +45,6 @@ export class UserService {
         // @GetMapping("/users/bidAuctions/{userId}")
         this.messageService.add('MessageService: fetched user auctions in with bid');
         const url = `${this.usersUrl}/bidAuctions/${id}`;
-        //const url = 'localhost:8080/users/bidAuctions/${id}';
         return this.http.get<Auction[]>(url).pipe(
             catchError(this.handleError.handle('UserService', 'getUserAuctionsInWichIBid', []))
         );
@@ -76,6 +75,12 @@ export class UserService {
     private log(message: string) {
         this.messageService.add(`UserService: ${message}`);
     }
+
+    /** Create a new user */
+    register(user: User) {
+        return this.http.post(`${this.usersUrl}/register`, user);
+    }
+
     
     
 }
