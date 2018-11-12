@@ -70,15 +70,19 @@ export class UserService {
         );
     }
     
+    /** Create a new user */
+    register(user: User) : Observable<User> {
+        //return this.http.post(`${this.usersUrl}/register`, user);
+        return this.http.post<User>(this.usersUrl, user, httpOptions).pipe(
+        tap((user: User) => this.log(`added user w/ id=${user.id}`)),
+        catchError(this.handleError.handle<User>('UserService', 'register'))
+        );
+    }
     
+
     /** Log a UserService message with the MessageService */
     private log(message: string) {
         this.messageService.add(`UserService: ${message}`);
-    }
-
-    /** Create a new user */
-    register(user: User) {
-        return this.http.post(`${this.usersUrl}/register`, user);
     }
 
     
