@@ -9,7 +9,6 @@ import { MessagesComponent } from './messages/messages.component'; // <-- NgMode
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
-import { AuctionSearchComponent } from './auction-search/auction-search.component';
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     AuctionDetailComponent,
     MessagesComponent,
-    AuctionSearchComponent,
     UserDetailComponent,
     NavbarComponent,
     AllAuctionsComponent,

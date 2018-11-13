@@ -94,10 +94,14 @@ export class AuctionService {
     // Hay que modificar este --> Tiene que tener busqueda por titulo y descrip
     searchAuctions(term: string): Observable<Auction[]> {
         if (!term.trim()) {
-            // if not search term, return empty hero array.
+            // if not search term, return empty auction array.
             return of([]);
         }
-        return this.http.get<Auction[]>(`${this.auctionsUrl}/title/?title=${term}`).pipe(
+        //return this.http.post<Auction>(this.auctionsUrl, auction, httpOptions).pipe(
+        //return this.http.post(`${this.usersUrl}/register`, user);
+        //return this.http.post<User>(this.usersUrl, user, httpOptions).pipe(
+        //return this.http.get<Auction[]>(`${this.auctionsUrl}/title/?title=${term}`).pipe(
+        return this.http.get<Auction[]>(`${this.auctionsUrl}/title?title=${term}`).pipe(
         tap(_ => this.log(`found auctions matching "${term}"`)),
         catchError(this.handleError.handle<Auction[]>('AuctionService', 'searchAuctions', []))
         );

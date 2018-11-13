@@ -17,7 +17,8 @@
     
     <br>
     <br>
-    
+
+    <!--
 <div class="input-group md-form form-sm form-1 pl-0">
   <div class="input-group-prepend">
     <span class="input-group-text purple lighten-3" id="basic-text1"><i class="fa fa-search text-white"
@@ -25,7 +26,20 @@
   </div>
   <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search">
 </div>
-   
+   -->
+<div id="search-component">
+  <h3>Auction Search</h3>
+  <p>Make a search!</p>
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <ul class="search-result">
+    <li *ngFor="let auction of auctions$ | async" >
+      <a routerLink="/detail/{{auction.id}}">
+        {{auction.title}}
+      </a>
+    </li>
+  </ul>
+</div>
+    
     <br>
     <br>
     
@@ -74,34 +88,8 @@
                 </a>
             </li>
         </ul>
-    </div>
-        
+    </div>  
 </div>
-
-
-<!--    
-<div>
-  <label>Auction title:
-    <input #auctionTitle />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-    
-    <!--
-  <button (click)="add(auctionTitle.value); auctionTitle.value=''">add</button>
-</div>
-
-<h2>My Auctions</h2>
-<ul class="auctions">
-  <li *ngFor="let auction of auctions">
-    <a routerLink="/detail/{{auction.id}}"> 
-        <span class="badge">{{auction.id}}</span> {{auction.title}} 
-    </a>
-      <button class="delete" title="delete auction"
-        (click)="delete(auction)">x</button>
-  </li>
-    
-</ul>
--->
     
 </div>
 
