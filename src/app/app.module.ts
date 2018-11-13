@@ -11,7 +11,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AllAuctionsComponent } from './all-auctions/all-auctions.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -24,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     AuctionDetailComponent,
     MessagesComponent,
     UserDetailComponent,
-    NavbarComponent,
     AllAuctionsComponent,
     LoginComponent,
     RegisterComponent,
