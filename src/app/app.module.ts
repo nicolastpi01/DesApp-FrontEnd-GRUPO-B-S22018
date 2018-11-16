@@ -15,6 +15,27 @@ import { AllAuctionsComponent } from './all-auctions/all-auctions.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("493401267444-fimioeqolbm68t82jmdscdr8k425c9pm.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("Facebook-App-Id")
+  },
+  {
+    id: LinkedInLoginProvider.PROVIDER_ID,
+    provider: new LinkedInLoginProvider("LinkedIn-client-Id", false, 'en_US')
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -33,10 +54,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AppBootstrapModule
+    AppBootstrapModule,
+    SocialLoginModule  
   ],
     
-  providers: [],
+  providers: [
+      {
+        provide: AuthServiceConfig,
+        useFactory: provideConfig
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

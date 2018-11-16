@@ -83,8 +83,6 @@ export class UserService {
     /** Log a UserService message with the MessageService */
     private log(message: string) {
         this.messageService.add(`UserService: ${message}`);
-    }
-
-    
+    }    
     
 }
