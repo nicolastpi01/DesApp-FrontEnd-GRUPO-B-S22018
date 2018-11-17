@@ -6,18 +6,17 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AllAuctionsComponent } from './all-auctions/all-auctions.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-//import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'detail/:id', component: AuctionDetailComponent },
-    { path: 'user/detail/:id', component: UserDetailComponent },
-    { path: 'auctions', component: AllAuctionsComponent },
-    
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'detail/:id', component: AuctionDetailComponent, canActivate: [AuthGuard] },
+    { path: 'user/detail/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
+    { path: 'auctions', component: AllAuctionsComponent, canActivate: [AuthGuard] },
     
     
     // otherwise redirect to home

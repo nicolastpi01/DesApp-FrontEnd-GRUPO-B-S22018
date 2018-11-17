@@ -21,7 +21,6 @@ export class AuctionService {
   constructor(private messageService: MessageService, private http: HttpClient, private handleError: ErrorHandling) { }
     
     getPopularAuctions(): Observable<Auction[]> {
-         // TODO: send the message _after_ fetching the popular auctions
         this.messageService.add('MessageService: fetched popular auctions');
         return this.http.get<Auction[]>(`${this.auctionsUrl}/populars`).pipe(
             catchError(this.handleError.handle('AuctionService', 'getPopularAuctions', []))
@@ -29,7 +28,6 @@ export class AuctionService {
     }
     
     getRecentAuctions(): Observable<Auction[]> {
-         // TODO: send the message _after_ fetching the recents auctions
         this.messageService.add('MessageService: fetched recents auctions');
         return this.http.get<Auction[]>(`${this.auctionsUrl}/recents`).pipe(
             catchError(this.handleError.handle('AuctionService', 'getRecentsAuctions', []))
@@ -37,7 +35,6 @@ export class AuctionService {
     }
     
     getNextToFinishAuctions(): Observable<Auction[]> {
-         // TODO: send the message _after_ fetching the next to finish auctions
         this.messageService.add('MessageService: fetched next to finish auctions');
         return this.http.get<Auction[]>(`${this.auctionsUrl}/tofinalize`).pipe(
             catchError(this.handleError.handle('AuctionService', 'getNextToFinishAuctions', []))
@@ -45,7 +42,6 @@ export class AuctionService {
     }
     
     getAuctions(): Observable<Auction[]> {
-         // TODO: send the message _after_ fetching the auctions
         this.messageService.add('MessageService: fetched auctions');
         return this.http.get<Auction[]>(this.auctionsUrl).pipe(
             catchError(this.handleError.handle('AuctionService', 'getAuctions', []))
@@ -83,7 +79,6 @@ export class AuctionService {
     deleteAuction (auction: Auction | number): Observable<Auction> {
         const id = typeof auction === 'number' ? auction : auction.id;
         const url = `${this.auctionsUrl}/${id}`;
-
         return this.http.delete<Auction>(url, httpOptions).pipe(
         tap(_ => this.log(`deleted auction id=${id}`)),
         catchError(this.handleError.handle<Auction>('AuctionService', 'deleteAuction'))

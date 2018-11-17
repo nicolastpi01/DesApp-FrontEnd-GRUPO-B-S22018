@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { first, debounceTime } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication.service';
 import { AuthService, 
         SocialUser, 
@@ -17,64 +17,74 @@ import { AuthService,
 export class LoginComponent implements OnInit {
     
     private user: SocialUser;
-    private loggedIn: boolean;
-
+    //private loggedIn: boolean;
+    returnUrl: string;
+    
     //loginForm: FormGroup;
     //loading = false;
     //submitted = false;
-    //returnUrl: string;
+    // alertService, formBuilder
     
-    constructor(private authService: AuthService) {
-        /*
-    constructor(private router: Router, 
-                private route : ActivatedRoute, 
-                private authenticationService: AuthenticationService,
-                private formBuilder: FormBuilder) { //, private alertService: AlertService) 
-        
-        // redirect to home if already logged in
-        /*
-        if (this.authenticationService.currentUserValue) {
+    constructor(private authService: AuthService, private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
+
+        // redirect to home if already logged in    
+        if(this.authenticationService.currentUserValue) {
             this.router.navigate(['/home']);
         }
-        */
-        
     }
 
     ngOnInit() {
-        //this.signIn();
         /*
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
         
-        
+        */
+        this.authService.authState.subscribe((user) => {
+        this.user = user;
+        //this.loggedIn = (user != null);
+        });
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
-        */
     }
     
     signInWithGoogle(): void {
         this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
-        this.user = userData;
+        //this.user = userData;
+        // wait 900ms to see the profile picture
+        debounceTime(900),
+        this.authenticationService.login(userData)
+        .subscribe(
+            data => this.router.navigate([this.returnUrl])
+            );
         });
     }
- 
+     
     signInWithFB(): void {
         this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((userData) => {
-        this.user = userData;
+        //this.user = userData;
+        this.authenticationService.login(userData)
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.router.navigate([this.returnUrl]);
+            });
         });
     }
   
     signInWithLinkedIn(): void {
         this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID).then((userData) => {
-        this.user = userData;
+        //this.user = userData;
+        this.authenticationService.login(userData)
+            .subscribe(
+                data => {
+                    this.router.navigate([this.returnUrl]);
+                });
         });
     }  
  
-    signOut(): void {
-        this.authService.signOut();
-    }
+    
 
     // convenience getter for easy access to form fields
     //get f() { return this.loginForm.controls; }
@@ -86,16 +96,6 @@ export class LoginComponent implements OnInit {
         }).catch(error => {
             console.log(error);
         });
-    }
-    
-    
-    
-    onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     }
     
     */

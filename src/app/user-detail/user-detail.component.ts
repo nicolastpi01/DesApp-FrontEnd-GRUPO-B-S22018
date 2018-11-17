@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
 import { AuctionService } from '../auction.service';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -19,18 +20,28 @@ export class UserDetailComponent implements OnInit {
     auctionsInWichIBid: Auction[];
     user: User;
     registerForm: FormGroup;
+    /*
+    Si quiero que algo del front se actualize cuando el usuario se logue o desloguea uso esto
+    currentUser: User;
+    currentUserSubscription: Subscription;
+    */
     
+    // METADATA FOR FRONT DEVELOP
     //myAuctions = AUCTIONS; // mock data
     //auctionsInWichIBid = AUCTIONS; // mock data
     //user = USER; // mock data
-
-    // 
-  constructor(private route: ActivatedRoute, private userService: UserService, private location: Location, private auctionService: AuctionService, private formBuilder: FormBuilder) { }
+ 
+  constructor(private route: ActivatedRoute, private userService: UserService, private location: Location, private auctionService: AuctionService, private formBuilder: FormBuilder, private authenticationService: AuthenticationService) {
+      /*
+      this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
+            this.currentUser = user;
+        }); */
+  }
 
   ngOnInit() {
       this.getUser();
-      this.getAuctionsInWichIBid();
-      this.getMyAuctions();
+      this.getAuctionsInWichIBid(); // modificar
+      this.getMyAuctions(); // modificar
       
       this.registerForm = this.formBuilder.group({
             //title:        ['', [Validators.required, Validators.minLength(10), Validators.minLength(50)]]
@@ -48,11 +59,20 @@ export class UserDetailComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
     
+    
+    
     getUser(): void {
         const id = +this.route.snapshot.paramMap.get('id');
         this.userService.getUser(id)
         .subscribe(user => this.user = user);
     }
+    
+    /*
+     ngOnDestroy() {
+        // unsubscribe to ensure no memory leaks
+        this.currentUserSubscription.unsubscribe();
+    }
+    */
     
     getMyAuctions(): void {
         const id = +this.route.snapshot.paramMap.get('id');
@@ -78,7 +98,6 @@ export class UserDetailComponent implements OnInit {
         this.myAuctions.push(auction);
         });
     }
-    
     
     save(): void {
         // hay que ver que hace normalize, hay que hacer una especie de F5 luego de subscribe
