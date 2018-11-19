@@ -17,7 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
-import { JwtInterceptor }  from './jwt.interceptor';
+import { JwtInterceptor }  from './jwt-interceptor';
 
 let config = new AuthServiceConfig([
   {
@@ -59,13 +59,18 @@ export function provideConfig() {
     SocialLoginModule  
   ],
     
+  bootstrap: [AppComponent],
+    
   providers: [
-       {
+      {
+        provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
+      },
+      {
         provide: AuthServiceConfig,
-        //provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true,
-        useFactory: provideConfig,
+        useFactory: provideConfig
       }
+        
   ],
-  bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
