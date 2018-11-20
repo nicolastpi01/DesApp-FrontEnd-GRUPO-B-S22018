@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { AuctionDetailComponent } from './auction-detail/auction-detail.component';
 import { MessagesComponent } from './messages/messages.component'; 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 import { JwtInterceptor }  from './jwt.interceptor';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 let config = new AuthServiceConfig([
   {
@@ -38,6 +40,11 @@ export function provideConfig() {
   return config;
 }
 
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +63,14 @@ export function provideConfig() {
     FormsModule,
     HttpClientModule,
     AppBootstrapModule,
-    SocialLoginModule  
+    SocialLoginModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
     
   providers: [
