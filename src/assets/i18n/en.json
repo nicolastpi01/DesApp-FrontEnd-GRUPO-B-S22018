@@ -1,0 +1,11 @@
+{
+    "PRINCIPAL": "HOME",
+    "WELCOME" : "Welcome to Subasteando!",
+    "DESCRIPTION1" : "Pick up a auction an start participate!",
+    "DESCRIPTION2" :"You can select distinct kinds of auctions, since populars,",
+    "DESCRIPTION3" :"to recents, besides you can search a auction by title or description. Feel free to navigate around the page.",
+    "SEARCH1" : "Auction Search",
+    "SEARCH2" : "Make a search!",
+    "RECENTS" : "Most Recents",
+    "FINISH" : "Next to finish"
+}

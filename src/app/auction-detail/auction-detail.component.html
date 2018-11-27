@@ -1,5 +1,4 @@
-<div *ngIf="auction">
-    <div class="container">
+  <div class="container">
         <div class="row">
             <div class="col-sm-6" style="background-color:lavender;">
                 <h2>{{auction.title | uppercase}} Details</h2>
@@ -43,6 +42,7 @@
                     </div>
             </div>
         </div>
+        <div id="map" class="map" (click)="show_info"></div>
         <button type="button" class="btn btn-primary btn-sm" (click)="goBack()">go back</button>
     </div>
-</div>
+

@@ -1,0 +1,12 @@
+{
+  "PRINCIPAL": "PRINCIPAL",
+  "WELCOME" : "Bienvenido a Subasteando!",
+  "DESCRIPTION1" : "Selecciona una subasta para empezar a participar!",
+  "DESCRIPTION2" :"Podes seleccion distintos tipos de subastas, tanto las populares",
+  "DESCRIPTION3" :"a recientes. Ademas podes buscar una por titulo o descripcion. Sentite libre a navegar la pagina",
+  "SEARCH1" : "Busqueda de Subastas",
+  "SEARCH2" : "Realizar una busqueda",
+  "POPULARS" : "Mas Populares",
+  "RECENTS" : "Mas recientes",
+  "FINISH" : "Proximas a finalizar"
+}

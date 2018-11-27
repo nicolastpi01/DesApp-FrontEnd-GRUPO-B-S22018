@@ -8,12 +8,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
-
 <div class="container-fluid">
-    <h1>Welcome to Subasteando!</h1>
-    <p>Pick up a auction an start participate!.</p>
-    <p>You can select distinct kinds of auctions, since populars,</p> 
-    <p>to recents, besides you can search a auction by title or description. Feel free to navigate around the page.</p>
+    <h1 translate>WELCOME</h1>
+    <p translate>DESCRIPTION1</p>
+    <p translate>DESCRIPTION2</p>
+    <p translate>DESCRIPTION3</p>
     
     <br>
     <br>
@@ -28,8 +27,8 @@
 </div>
    -->
 <div id="search-component">
-  <h3>Auction Search</h3>
-  <p>Make a search!</p>
+  <h3 translate>SEARCH1</h3>
+  <p translate>SEARCH2</p>
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
   <ul class="search-result">
     <li *ngFor="let auction of auctions$ | async" >
@@ -46,7 +45,7 @@
 <div class="row">
     <div class="col-sm-4" style="background-color:lavender;">
         <ul class="auctions1">
-            <h3>most populars</h3>
+            <h3 translate>POPULARS</h3>
             <li *ngFor="let auction of popularAuctions">
                 <a routerLink="/detail/{{auction.id}}">
                     <img src={{auction.urlPics[0]}}>
@@ -61,7 +60,7 @@
         
     <div class="col-sm-4" style="background-color:lavenderblush;">
         <ul class="auctions2">
-            <h3>most recents</h3>
+            <h3 translate>RECENTS</h3>
             <li *ngFor="let auction of recentsAuctions">
                 <a routerLink="/detail/{{auction.id}}">
                     <img src={{auction.urlPics[0]}}> 
@@ -76,7 +75,7 @@
         
     <div class="col-sm-4" style="background-color:aquamarine;">
         <ul class="auctions3">
-            <h3>next to finish</h3>
+            <h3 translate>FINISH</h3>
             <li *ngFor="let auction of nextToFinishAuctions">
                 <a routerLink="/detail/{{auction.id}}">
                     <img src={{auction.urlPics[0]}}>
