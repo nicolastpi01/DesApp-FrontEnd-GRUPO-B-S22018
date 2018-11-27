@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-    
+
     constructor(private authenticationService: AuthenticationService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -14,8 +14,8 @@ export class JwtInterceptor implements HttpInterceptor {
         let socialUser  = this.authenticationService.currentSocialUserValue;
         if (currentUser && socialUser) {
             request = request.clone({
-                setHeaders: { 
-                    Authorization: `Bearer ${socialUser}` // Bearer? sacar eso!
+                setHeaders: {
+                    Authorization: `Bearer ${socialUser.authToken}` // Bearer? sacar eso!
                 }
             });
         }
