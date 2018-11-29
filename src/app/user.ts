@@ -5,7 +5,8 @@ export class User {
   email: string;
   password: string;
   birthday: Date;
-    
+  accessToken: string;
+
     constructor(id: number, name: string, email: string) {
         this.id = id;
         this.name = name;
@@ -13,7 +14,3 @@ export class User {
     };
 
 }
-
-
-
-
