@@ -15,40 +15,41 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuctionService {
-    private auctionsUrl = '//localhost:8080/auctions';  // URL to web api
-    
+    // URL to web api
+    private auctionsUrl = '//localhost:8080/auctions';
+
 
   constructor(private messageService: MessageService, private http: HttpClient, private handleError: ErrorHandling) { }
-    
+
     getPopularAuctions(): Observable<Auction[]> {
         this.messageService.add('MessageService: fetched popular auctions');
         return this.http.get<Auction[]>(`${this.auctionsUrl}/populars`).pipe(
             catchError(this.handleError.handle('AuctionService', 'getPopularAuctions', []))
         );
     }
-    
+
     getRecentAuctions(): Observable<Auction[]> {
         this.messageService.add('MessageService: fetched recents auctions');
         return this.http.get<Auction[]>(`${this.auctionsUrl}/recents`).pipe(
             catchError(this.handleError.handle('AuctionService', 'getRecentsAuctions', []))
         );
     }
-    
+
     getNextToFinishAuctions(): Observable<Auction[]> {
         this.messageService.add('MessageService: fetched next to finish auctions');
         return this.http.get<Auction[]>(`${this.auctionsUrl}/tofinalize`).pipe(
             catchError(this.handleError.handle('AuctionService', 'getNextToFinishAuctions', []))
         );
     }
-    
+
     getAuctions(): Observable<Auction[]> {
         this.messageService.add('MessageService: fetched auctions');
         return this.http.get<Auction[]>(this.auctionsUrl).pipe(
             catchError(this.handleError.handle('AuctionService', 'getAuctions', []))
         );
     }
-    
-    
+
+
     /** GET auction by id. Will 404 if id not found */
     getAuction(id: number): Observable<Auction> {
         const url = `${this.auctionsUrl}/${id}`;
@@ -57,7 +58,7 @@ export class AuctionService {
             catchError(this.handleError.handle<Auction>('AuctionService', `getAuction id=${id}`))
         );
     }
-    
+
     /** PUT: update the auction on the server */
     updateAuction(id: number, auction: Auction): Observable<any> {
         const url = `${this.auctionsUrl}/${id}`;
@@ -66,7 +67,7 @@ export class AuctionService {
             catchError(this.handleError.handle<any>('AuctionService', 'updateAuction'))
         );
     }
-    
+
     /** POST: add a new auction to the server */
     addAuction(auction: Auction): Observable<Auction> {
         return this.http.post<Auction>(this.auctionsUrl, auction, httpOptions).pipe(
@@ -74,7 +75,7 @@ export class AuctionService {
         catchError(this.handleError.handle<Auction>('AuctionService', 'addAuction'))
         );
     }
-    
+
     /** DELETE: delete the auction from the server */
     deleteAuction (auction: Auction | number): Observable<Auction> {
         const id = typeof auction === 'number' ? auction : auction.id;
@@ -84,7 +85,7 @@ export class AuctionService {
         catchError(this.handleError.handle<Auction>('AuctionService', 'deleteAuction'))
         );
     }
-    
+
     /* GET auctions whose name contains search term */
     // Hay que modificar este --> Tiene que tener busqueda por titulo y descrip
     searchAuctions(term: string): Observable<Auction[]> {
@@ -101,15 +102,15 @@ export class AuctionService {
         catchError(this.handleError.handle<Auction[]>('AuctionService', 'searchAuctions', []))
         );
     }
-    
-    
+
+
     /** Log a AuctionService message with the MessageService */
     private log(message: string) {
         this.messageService.add(`AuctionService: ${message}`);
     }
-    
-    
-    
 
-    
+
+
+
+
 }
