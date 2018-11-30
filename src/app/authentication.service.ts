@@ -39,8 +39,8 @@ export class AuthenticationService {
     */
 
     login(email: string) : Observable<any> {
-            //let token = socialUser.authToken; // borrar, no es necesario
-            return this.http.post<any>(`${this.usersUrl}/authenticate`, email, httpOptions)
+            const url = `${this.usersUrl}/authenticate?email=${email}`;
+            return this.http.post<any>(url, httpOptions)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 //if (user) {
