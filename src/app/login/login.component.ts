@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../user';
 import { first, debounceTime } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication.service';
 import { AuthService,
@@ -26,13 +27,11 @@ export class LoginComponent implements OnInit {
     // alertService, formBuilder
 
     constructor(private authService: AuthService, private authenticationService: AuthenticationService, private router: Router, private route: ActivatedRoute) {
-
         // redirect to home if already logged in
-        /*
-        if(this.authenticationService.currentUserValue) {
-            this.router.navigate(['/home']);
-        }
-        */
+        //if(this.authenticationService.currentUserValue) {
+        //    this.router.navigate(['/home']);
+        //}
+
     }
 
     ngOnInit() {
@@ -55,7 +54,7 @@ export class LoginComponent implements OnInit {
         this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
         //this.user = userData;
         // wait 900ms to see the profile picture
-        debounceTime(900),
+        debounceTime(1200),
         this.authenticationService.login(userData.email)
         .subscribe(
             data => this.router.navigate([this.returnUrl])

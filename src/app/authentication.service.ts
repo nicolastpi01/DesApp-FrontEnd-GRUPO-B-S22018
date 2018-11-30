@@ -5,7 +5,6 @@ import { User } from './user';
 import { MessageService } from './message.service';
 import { ErrorHandling } from './errorhandling';
 import { catchError, map, tap } from 'rxjs/operators';
-//import { SocialUser } from "angularx-social-login";
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,8 +16,6 @@ const httpOptions = {
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-    //private currentSocialUserSubject: BehaviorSubject<SocialUser>;
-    //public currentSocialUser: Observable<SocialUser>;
     private usersUrl = '//localhost:8080/users';  // URL to web api
 
     constructor(private http: HttpClient, private messageService: MessageService, private handleError: ErrorHandling) {

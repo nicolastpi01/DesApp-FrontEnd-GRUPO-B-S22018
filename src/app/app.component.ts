@@ -15,7 +15,7 @@ export class AppComponent {
   title = 'auctions-app';
   currentUser: User;
 
-    
+
     constructor(private translate: TranslateService, private router: Router, private authenticationService: AuthenticationService, private authService: AuthService) {
       // this language will be used as a fallback when a translation isn't found in the current language
       translate.setDefaultLang('en');
@@ -29,16 +29,23 @@ export class AppComponent {
   switchLanguage(lang) {
     this.translate.use(lang);
   }
-    
+
     logout() {
         // requiere token
         this.authenticationService.logout();
         this.authService.signOut();
         this.router.navigate(['/login']);
     }
-  
+
+    ngOnDestroy() {
+        /*
+        this.loginForm = this.formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required]
+        });
+
+        */
+        this.logout();
+    }
+
 }
-
-
-
-
