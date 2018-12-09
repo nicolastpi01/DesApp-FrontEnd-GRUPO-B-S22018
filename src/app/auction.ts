@@ -8,7 +8,8 @@ export class Auction {
   urlPics: string[];
   initialPrice: number;
   currentPrice: number;
-  bidders: User[];
+  biddersSize: number;
+  //bidders: User[];
 
 }
 

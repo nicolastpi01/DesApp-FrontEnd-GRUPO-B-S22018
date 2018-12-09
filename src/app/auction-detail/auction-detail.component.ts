@@ -62,6 +62,7 @@ export class AuctionDetailComponent implements OnInit {
         const id = +this.route.snapshot.paramMap.get('id');
         this.auctionService.makeOffert(id, this.currentUser)
         .subscribe(auction => this.auction = auction);
+        //this.location.back();
     };
 
     // Actualizar una subasta, deberia hacerse desde este componente pero solo siendo el dueño de la subasta

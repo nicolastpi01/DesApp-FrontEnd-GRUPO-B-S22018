@@ -11,7 +11,7 @@
 
                     <div>
                         <div class="cities1">
-                            <p>current track: {{auction.bidders.length}}</p>
+                            <p>current track: {{ auction.offerts.length }}</p>
                         </div>
                         <div class="cities2">
                             <p>${{auction.currentPrice}}</p>
@@ -20,7 +20,7 @@
 
                     <div>
                         <div class="cities1">
-                            <p>next track: {{auction.bidders.length + 1}}</p>
+                            <p>next track: {{auction.offerts.length + 1}}</p>
                         </div>
                         <div class="cities2">
                             <p>${{auction.currentPrice + (auction.currentPrice * 15 / 100)}}</p>
@@ -31,14 +31,20 @@
                     </div>
 
                     <div>
-                        <h3>Amount of Bidders:</h3>
-                        <p>{{ auction.bidders.length }} bidders in this auction</p>
+                      <h3>Amount of Bidders:</h3>
+                      <p>bidders in this auction #{{ auction.biddersSize }}</p>
                     </div>
 
                     <div>
-                        <h3>Auction Progress:</h3>
-                        <br>
-                        <br>
+                            <ul class="offerts">
+                                <h3>Offerts:</h3>
+                                <li *ngFor="let offert of auction.offerts">
+                                        <span>User: {{offert.userId}}    </span>
+                                        <span>Tramo: {{offert.tramo}}    </span>
+                                        <span>Hour: {{offert.hour}}      </span>
+                                        <span>Date: {{offert.date}}      </span>
+                                </li>
+                            </ul>
                     </div>
             </div>
         </div>
