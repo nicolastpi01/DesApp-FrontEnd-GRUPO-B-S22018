@@ -1,7 +1,7 @@
 import { Auction } from './auction';
-
+/*
 export const AUCTIONS: Auction[] = [
-    
+
   { id: 11, title : 'Mr. Nice' , description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing. Nam quis justo in augue auctor imperdiet.", urlPics: ["https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Tony_Soprano.jpg/270px-Tony_Soprano.jpg"], bidders: [], currentPrice: 100},
   { id: 12, title : 'Narco', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', urlPics:[ "https://upload.wikimedia.org/wikipedia/en/thumb/4/4f/Silvio_Dante-_Sopranos.png/220px-Silvio_Dante-_Sopranos.png" ], bidders: [], currentPrice: 100},
   { id: 13, title : 'Bombasto', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', urlPics:[ "https://i.pinimg.com/originals/3b/14/c8/3b14c8243204b71217eb78d9fcd8b457.jpg"], bidders: [], currentPrice: 100},
@@ -12,3 +12,5 @@ export const AUCTIONS: Auction[] = [
   { id: 18, title : 'Dr IQ' , description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', urlPics: ["https://vignette.wikia.nocookie.net/sopranos/images/0/08/Aj.jpg/revision/latest?cb=20140313032739"], bidders: [], currentPrice: 100},
   { id: 19, title : 'Magma' , description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', urlPics: ["https://upload.wikimedia.org/wikipedia/en/2/2f/Richieaprile.PNG"], bidders: [], currentPrice: 100}
 ];
+
+*/

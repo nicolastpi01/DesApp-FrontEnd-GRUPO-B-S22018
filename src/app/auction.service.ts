@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auction } from './auction';
+import { User } from './user';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -65,6 +66,14 @@ export class AuctionService {
         return this.http.put(url, auction, httpOptions).pipe(
             tap(_ => this.log(`updated auction id=${auction.id}`)),
             catchError(this.handleError.handle<any>('AuctionService', 'updateAuction'))
+        );
+    }
+
+    makeOffert(auctionId: number, user: User): Observable<Auction> {
+        const url = `${this.auctionsUrl}/offert/${auctionId}`;
+        return this.http.put(url, user, httpOptions).pipe(
+            tap(_ => this.log(`open offert in auction with id=${auctionId}`)),
+            catchError(this.handleError.handle<any>('AuctionService', 'makeOffert'))
         );
     }
 

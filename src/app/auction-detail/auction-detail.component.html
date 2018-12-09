@@ -8,7 +8,7 @@
                 <p>{{auction.description}}</p>
             </div>
             <div class="col-sm-6" style="background-color:deepskyblue;">
-                
+
                     <div>
                         <div class="cities1">
                             <p>current track: {{auction.bidders.length}}</p>
@@ -17,7 +17,7 @@
                             <p>${{auction.currentPrice}}</p>
                         </div>
                     </div>
-                
+
                     <div>
                         <div class="cities1">
                             <p>next track: {{auction.bidders.length + 1}}</p>
@@ -26,15 +26,15 @@
                             <p>${{auction.currentPrice + (auction.currentPrice * 15 / 100)}}</p>
                         </div>
                         <div class="cities3">
-                            <button type="button" class="btn btn-primary btn-sm">Make a offert</button>
+                            <button type="button" class="btn btn-primary btn-sm" (click)="offert()">Make a offert</button>
                         </div>
                     </div>
-                
+
                     <div>
                         <h3>Amount of Bidders:</h3>
-                        <p>{{auction.bidders.length}} bidders in this auction</p>
+                        <p>{{ auction.bidders.length }} bidders in this auction</p>
                     </div>
-                
+
                     <div>
                         <h3>Auction Progress:</h3>
                         <br>
@@ -42,7 +42,8 @@
                     </div>
             </div>
         </div>
-        <div id="map" class="map" (click)="show_info"></div>
+        <!--
+        <div id="map" class="map" (click)="show_info"></div> -->
+
         <button type="button" class="btn btn-primary btn-sm" (click)="goBack()">go back</button>
     </div>
-

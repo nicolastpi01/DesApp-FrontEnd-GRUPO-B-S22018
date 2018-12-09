@@ -16,9 +16,11 @@ export class JwtInterceptor implements HttpInterceptor {
         if (currentUser) {
             request = request.clone({
                 setHeaders: {
-                    authorization: `Bearer ${currentUser.accessToken}`
+                     authorization: `Bearer ${ currentUser.accessToken }`
                 }
             });
+            console.log('estoy dentro del if token: ' + currentUser.accessToken);
+            console.log(request);
             //return next.handle(request);
         }
         //this.log("");
