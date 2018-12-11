@@ -13,45 +13,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 
-<!--
-<div class="container-fluid">
-    <h1>Hello {{user.name}}!</h1>
-    <p>You can watch your auctions, watch the auctions in which you bidded, edit your profile, your auctions, and add some new.</p>
-
-    <div class="row">
-        <div class="col-sm-5" style="background-color:lavender;">
-            <p>.col-sm-5</p>
-            <ul class="auctions1">
-                <h3>My Auctions</h3>
-                <li *ngFor="let auction of myAuctions">
-                    <a routerLink="/detail/{{auction.id}}">
-                        <img src={{auction.urlPics[0]}}>
-                        <span class="badge">{{auction.id}}</span> {{auction.title}}
-                        <p>{{auction.description}}</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="col-sm-5" style="background-color:lavenderblush;">.col-sm-5
-            <ul class="auctions2">
-                <h3>Auctions in wich I bid</h3>
-                <li *ngFor="let auction of auctionsInWichIBid">
-                    <a routerLink="/detail/{{auction.id}}">
-                        <img src={{auction.urlPics[0]}}>
-                        <span class="badge">{{auction.id}}</span> {{auction.title}}
-                        <p>{{auction.description}}</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
--->
 
 <div class="container-fluid">
-    <h1>Hello {{user.name}}!</h1>
-    <p>You can watch your auctions, watch the auctions in which you bidded, edit your profile, your auctions, and add some new.</p>
+    <h1 translate>HI{{user.name}}!</h1>
+    <p translate>AUCTDETAIL</p>
 
     <br>
     <br>
@@ -60,7 +25,7 @@
     <div class="row">
         <div class="col-sm-6" style="background-color:lavender;">
             <ul class="myAuctions">
-                <h3>My Auctions</h3>
+                <h3 translate>MYAUCTIONS</h3>
                 <li *ngFor="let auction of myAuctions">
                     <a routerLink="/detail/{{auction.id}}">
                         <img class="rounded-circle img-fluid d-block mx-auto" src="{{auction.urlPics[0]}}" alt="">
@@ -75,7 +40,7 @@
 
         <div class="col-sm-6" style="background-color:lavenderblush;">
             <ul class="myAuctions">
-                <h3>My Activity</h3>
+                <h3 translate>MYACTIV</h3>
                 <li *ngFor="let auction of auctionsInWichIBid">
                     <a routerLink="/detail/{{auction.id}}">
                         <img class="rounded-circle img-fluid d-block mx-auto" src="{{auction.urlPics[0]}}" alt="">
@@ -94,20 +59,23 @@
     <br>
 
     
-    <h3>Create a new Auction</h3>
-    <p>generates a new auction so that users can compete for it. Add some date!!!</p>
+    <h3 translate>NEWAUCT</h3>
+    <p translate>NEWAUCTDESCRIP</p>
     <br>
     <form [formGroup]="registerForm" (ngSubmit)="addAuction()">
-        
+
+
+
+
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title" translate>TIT</label>
             <input type="text" formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
             <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
                 <div *ngIf="f.title.errors.required">Title is required</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description" translate>DESCR</label>
             <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
             <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
                 <div *ngIf="f.description.errors.required">Description is required</div>
@@ -115,14 +83,14 @@
         </div>
         
         <div class="form-group">
-            <label for="address">Address</label>
+            <label for="address" translate>DIR</label>
             <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
             <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                 <div *ngIf="f.address.errors.required">Address is required</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="initialPrice">Price</label>
+            <label for="initialPrice" translate>PRICE</label>
             <input type="number" formControlName="initialPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.initialPrice.errors }" />
             <div *ngIf="submitted && f.initialPrice.errors" class="invalid-feedback">
                 <div *ngIf="f.initialPrice.errors.required">Price is required</div>
@@ -130,21 +98,21 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="endingTime">Ending Time</label>
+            <label for="endingTime" translate>ENDTIME</label>
             <input type="number" formControlName="endingTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endingTime.errors }" />
             <div *ngIf="submitted && f.endingTime.errors" class="invalid-feedback">
                 <div *ngIf="f.endingTime.errors.required">Ending Time</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="openingDate">Opening Date</label>
+            <label for="openingDate" translate>OPENDATE</label>
             <input type="date" formControlName="openingDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.openingDate.errors }" />
             <div *ngIf="submitted && f.openingDate.errors" class="invalid-feedback">
                 <div *ngIf="f.openingDate.errors.required">Opening Date</div>
             </div>
         </div>
         <div class="form-group">
-            <label for="endingDate">Ending Date</label>
+            <label for="endingDate" translate>ENDDATE</label>
             <input type="date" formControlName="endingDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endingDate.errors }" />
             <div *ngIf="submitted && f.endingDate.errors" class="invalid-feedback">
                 <div *ngIf="f.endingDate.errors.required">Ending Date</div>
@@ -153,7 +121,7 @@
         <div class="form-group">
             <br>
             <!--<button [disabled]="loading" class="btn btn-primary">Save</button> -->
-            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-primary" translate>SAVE</button>
         </div>
     </form>
 

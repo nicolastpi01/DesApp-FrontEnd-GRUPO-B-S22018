@@ -27,16 +27,16 @@
     <!--*ngIf="currentUser" -->
 <div class="topnav" id="myTopnav">
   <a href="/home" class="active">Home</a>
-  <a href="/auctions">All Auctions</a>
-  <a href="user/detail/{{1}}">My Account</a> <!-- Mock Data -->
-  <a (click)="logout()">Log Out</a>
+  <a href="/auctions" translate>ALLAUCT</a>
+  <a href="user/detail/{{1}}" translate>MYACC</a> <!-- Mock Data -->
+  <a (click)="logout()" translate>LOGOUT</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
-</div>
+    <a (click)="switchLanguage('en')">English</a>
+    <a (click)="switchLanguage('es')">Spanish</a>
 
-<button (click)="switchLanguage('en')">English</button>
-<button (click)="switchLanguage('es')">Spanish</button>
+</div>
     
    
     

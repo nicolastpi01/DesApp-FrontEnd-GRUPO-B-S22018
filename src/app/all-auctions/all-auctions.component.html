@@ -15,8 +15,8 @@
 <body>
 
     <div class="container-fluid">
-        <h1>All Auctions!</h1>
-        <p>Look at the auctions, look at their status, select some and start participating!.</p>
+        <h1 translate>ALLAUCT</h1>
+        <p translate>ALLAUCTDESCRIP</p>
         
         <br>
         <br>
@@ -25,7 +25,7 @@
             <!-- col-sm-5 -->
             <div class="col-sm-5 column-in-center" style="background-color:lavender;">
                 <ul class="myAuctions">
-                    <h3>All Auctions</h3>
+                    <h3 translate>ALLAUCT</h3>
                     <li *ngFor="let auction of auctions">
                         <a routerLink="/detail/{{auction.id}}">
                             <img class="rounded-circle img-fluid d-block mx-auto" src="{{auction.urlPics[0]}}" alt="">
